@@ -1,0 +1,19 @@
+body {
+    background: #eeeeee;
+}
+
+#progressbar {
+    background-color: #747C84;
+    border-radius: 8px;
+    /* (height of inner div) / 2 + padding */
+    padding: 3px;
+}
+
+#progressbar>div {
+    background-color: #5DBFB3;
+    /*"#5DBFB3";*/
+    /* Adjust with JavaScript */
+    width: 80%;
+    height: 10px;
+    border-radius: 8px;
+}
