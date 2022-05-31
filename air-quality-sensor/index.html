@@ -52,7 +52,7 @@
         var co2 = document.getElementById("CO2");
         var humidity = document.getElementById("humidity");
         var temp = document.getElementById("temp");
-        var temp_pb = document.getElementById("t");
+        var temp_pb = document.getElementById("humidity_progressbar");
 
         const dbRef = ref(getDatabase());
         get(child(dbRef, 'values')).then((snapshot) => {
@@ -79,7 +79,7 @@
     <p id="temp"></p>
 
     <div id="progressbar" , width="80%">
-        <div id="t"></div>
+        <div id="humidity_progressbar"></div>
     </div>
 </body>
 
