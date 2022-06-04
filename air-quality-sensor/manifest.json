@@ -3,7 +3,7 @@
     "shortName": "Air Qualilty Sensor",
     "start_url": "./",
     "scope": ".",
-    "background_color": "#6dcdb1",
+    "background_color": "#355778",
     "theme_color": "#009578",
     "display": "standalone",
     "icons": [
@@ -13,7 +13,7 @@
             "type": "image/png"
         },
         {
-            "src": "images/logo512.png",
+            "src": "images/logo513.png",
             "sizes": "512x512",
             "type": "image/png"
         }
