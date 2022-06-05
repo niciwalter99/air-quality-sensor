@@ -1,3 +1,1 @@
-# Getting Started with Progressive Web Apps (PWA)
-Contains starting code for my tutorial on creating PWAs, check it out here:\
-https://www.youtube.com/watch?v=WbbAPfDVqfY
+Website to get stored Information from Firebase Realtime DB. Also usable as a Progressive Web App. 

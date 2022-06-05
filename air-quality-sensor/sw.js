@@ -1,4 +1,4 @@
-var version = 2
+var version = 1.0.0
 
 self.addEventListener("install", e => {
     e.waitUntil(
@@ -17,4 +17,3 @@ self.addEventListener("fetch", e => {
         })
     );
 });
-//hallo

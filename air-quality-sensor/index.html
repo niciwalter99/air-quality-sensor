@@ -16,14 +16,11 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-        // import { initializeApp } from 'firebase/app';
         import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
 
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // Very dump way to share API Information on Website, anyway doesn't matter because data not important
+        // TODO Restrict to only Read
         const firebaseConfig = {
             apiKey: "AIzaSyAPj1Oaze3sBsp6FQGSg6snlTawVxOyEPI",
             authDomain: "air-quality-sensor-19a88.firebaseapp.com",
@@ -39,6 +36,7 @@
         const analytics = getAnalytics(app);
         updateAllParameters();
 
+        // Updates The Parameters as well as the progressbar
         function updateAllParameters() {
           var mainText = document.getElementById("mainText");
           var submitBtn = document.getElementById("submitBtn");
@@ -66,31 +64,28 @@
               console.error(error);
           })
       }
-
+      // Update every 10 sec all Parameters
+      // TODO Last Sync Timestamp on Website
       setInterval(updateAllParameters, 10000);
     </script>
 
     <script type="module" src="src/index.js"></script>
-    <img src="images/logo513.png" id="center" style="display: block;
-    margin-top: 30px;
-    margin-bottom: -20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;">
+
+    <img src="images/logo513.png" id="center">
     <p  align="center", style="margin: 40px 30px; color:#EEF9FD; font-size: 50px">Air Quality Sensor</p>
 
     <p id="humidity", style="margin: -20px 30px; color:#EEF9FD">Humidity: No Data</p>
-    <div id="progressbar" , width="80%", style="margin: 40px 30px">
+    <div id="progressbar">
         <div id="humidity_progressbar"></div>
     </div>
 
-    <p id="temp", style="margin: -20px 30px; color:#EEF9FD">Temperature: No Data</p>
-    <div id="progressbar" , width="80%", style="margin: 40px 30px">
+    <p id="temp", class="progressbar_test">Temperature: No Data</p>
+    <div id="progressbar">
         <div id="temp_progressbar"></div>
     </div>
 
-    <p id="CO2", style="margin: -20px 30px; color:#EEF9FD">CO2 (ppm): No Data</p>
-    <div id="progressbar" , width="80%", style="margin: 40px 30px">
+    <p id="CO2", class="progressbar_test">CO2 (ppm): No Data</p>
+    <div id="progressbar">
         <div id="temp_progressbar"></div>
     </div>
 </body>
