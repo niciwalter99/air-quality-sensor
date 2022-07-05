@@ -12,7 +12,7 @@ body {
 
 #progressbar>div {
     background-color: #5DBFB3;
-    width: 80%;
+    width: 0%;
     height: 10px;
     border-radius: 8px;
 }
@@ -20,6 +20,15 @@ body {
 #center {
   display: block;
   margin-top: 30px;
+  margin-bottom: -20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+#center_image {
+  display: block;
+  margin-top: 100px;
   margin-bottom: -20px;
   margin-left: auto;
   margin-right: auto;
