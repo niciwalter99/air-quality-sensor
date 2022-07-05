@@ -40,7 +40,7 @@ function writeValue(data){
   o3_pb.setAttribute("style", `width: ${Math.round(o3 / 2)}%`)
   pm10_o.innerHTML = "PM10 Outside (ppm): " +  Math.round(pm10 * 10) / 10;
   pm10_pb.setAttribute("style", `width: ${Math.round(pm10 * 10) / 10}%`)
-weather_icon = "http://" + weather_icon
+weather_icon = "https://" + weather_icon
 document.getElementById('weather').src=weather_icon
   console.log(data)
 }
@@ -52,7 +52,7 @@ function successFunction(position) {
 
     console.log("Fetching data...");
     var loc = lat + ',' + lng
-    getJSON("http://api.weatherapi.com/v1/current.json?key=98f626c91ec048c78ab181846220507&q="+loc+"&aqi=yes")
+    getJSON("https://api.weatherapi.com/v1/current.json?key=98f626c91ec048c78ab181846220507&q="+loc+"&aqi=yes")
       .then(data => writeValue(data));
 }
 
