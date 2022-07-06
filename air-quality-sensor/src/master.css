@@ -32,15 +32,26 @@ body {
   width: 30%;
 }
 
-#center_image {
-  display: block;
-  margin-top: 100px;
-  margin-bottom: -20px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
+.flex-container {
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+
 }
 
+.flex-child {
+    margin-right: auto;
+}
+
+.flex-child:first-child {
+  margin-left: auto;
+  margin-right: -10px;
+}
+
+.weather div {
+  float: center;
+ clear: none;
+}
 .progressbar_test {
   margin: -20px 30px;
   color:#EEF9FD

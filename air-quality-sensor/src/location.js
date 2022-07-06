@@ -24,20 +24,16 @@ function setProgressBarValue(txt, pb, value_txt, value_pb, animation_name) {
 }
 
 
+// Writes PM10 and O3 Values and animates the Bar
 function writeValue(data){
 
+  // Get Data out of json
   city = data.location.name
   pm10 = Math.round(data.current.air_quality.pm10)
   o3 = Math.round(data.current.air_quality.o3)
   temp_outside = data.current.temp_c
   weather_icon = data.current.condition.icon
   weather_icon = weather_icon.slice(2, weather_icon.length)
-
-  console.log(data.location.name)
-  console.log(temp_outside)
-  console.log(o3)
-  console.log(pm10)
-  console.log(weather_icon)
 
   var o3_o = document.getElementById("o3_outside");
   var o3_pb = document.getElementById("o3_outside_progressbar");
@@ -47,23 +43,10 @@ function writeValue(data){
   setProgressBarValue(o3_o, o3_pb, "O3 (ppm): " +  o3, Math.round(o3 / 2), "o3")
   setProgressBarValue(pm10_o, pm10_pb, "PM10 (ppm): " +  pm10, pm10, "pm10")
 
-  var rulename = "pm10_animation"
-  //pm10_pb.style.animation-name = `${rulename}`;
-  //pm10_pb.parentNode.replaceChild(pm10_pb.cloneNode(true), pm10_pb);
-
-  //o3_o.innerHTML = "PM10 Outside (ppm): " +  o3;
-  //o3_pb.setAttribute("style", `width: ${Math.round(o3 / 2)}%; animation-name: pm10_animation`)
-
-  //pm10_o.innerHTML = "PM10 Outside (ppm): " +  Math.round(pm10 * 10) / 10;
-  //pm10_pb.setAttribute("style", `width: ${Math.round(pm10 * 10) / 10}%;
-  //animation-name: pm10_animation`)
-  weather_icon = "https://" + weather_icon
-  document.getElementById('weather').src=weather_icon
-  console.log(data)
-
-
-
-
+  //set Weather Summary on Bottom
+  document.getElementById("temp_outside").innerHTML = ` ${temp_outside}°C `
+  document.getElementById("city").innerHTML = ` ${data.location.name} `
+  document.getElementById('weather_icon').src="https://" + weather_icon
 }
 
 //Get the latitude and the longitude;
