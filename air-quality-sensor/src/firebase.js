@@ -20,12 +20,23 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 updateAllParameters();
 
+
+//Sets values for the Progressbar and animates it
+function setProgressBarValue(txt, pb, value_txt, value_pb, animation_name) {
+  txt.innerHTML = value_txt;
+  document.styleSheets[0].insertRule(`@keyframes ${animation_name} {from {width: 0%;}
+  to {width: ${value_pb}%;}}`);
+  pb.setAttribute("style", `width: ${value_pb}%`)
+  pb.style.animation= `${animation_name} 3s ease-in-out`
+}
+
 // Updates The Parameters as well as the progressbar
 function updateAllParameters() {
   var mainText = document.getElementById("mainText");
   var submitBtn = document.getElementById("submitBtn");
 
   var co2 = document.getElementById("CO2");
+  var co2_pb = document.getElementById("co2_progressbar");
   var humidity = document.getElementById("humidity");
   var temp = document.getElementById("temp");
   var humidity_pb = document.getElementById("humidity_progressbar");
@@ -37,10 +48,16 @@ function updateAllParameters() {
       if (snapshot.exists()) {
           console.log(snapshot.val());
           co2.innerHTML = "CO2 (ppm): " + snapshot.val()["CO2"];
-          humidity.innerHTML = "Humidity: " + snapshot.val()["humidity"] + " %";
-          temp.innerHTML = "Temperature: " + snapshot.val()["temp"] + " °C"
-          humidity_pb.setAttribute("style", `width: ${snapshot.val()["humidity"]}%`)
-          temp_pb.setAttribute("style", `width: ${snapshot.val()["temp"]}%`)
+
+          setProgressBarValue(co2, co2_pb, "CO2 (ppm): " + snapshot.val()["CO2"],
+          snapshot.val()["CO2"] / 8, "co2")
+
+          setProgressBarValue(humidity, humidity_pb, "Humidity: " + snapshot.val()["humidity"] + " %",
+          snapshot.val()["humidity"], "hum")
+
+          setProgressBarValue(temp, temp_pb, "Temperature: " + snapshot.val()["temp"] + " °C",
+          snapshot.val()["temp"]*2, "temp")
+
       } else {
           console.log("No data available");
       }

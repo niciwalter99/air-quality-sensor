@@ -15,12 +15,20 @@ const getJSON = async url => {
   return response.json(); // get JSON from the response
 }
 
+function setProgressBarValue(txt, pb, value_txt, value_pb, animation_name) {
+  txt.innerHTML = value_txt;
+  document.styleSheets[0].insertRule(`@keyframes ${animation_name} {from {width: 0%;}
+  to {width: ${value_pb}%;}}`);
+  pb.setAttribute("style", `width: ${value_pb}%`)
+  pb.style.animation= `${animation_name} 3s ease-in-out`
+}
+
 
 function writeValue(data){
 
   city = data.location.name
-  pm10 = data.current.air_quality.pm10
-  o3 = data.current.air_quality.o3
+  pm10 = Math.round(data.current.air_quality.pm10)
+  o3 = Math.round(data.current.air_quality.o3)
   temp_outside = data.current.temp_c
   weather_icon = data.current.condition.icon
   weather_icon = weather_icon.slice(2, weather_icon.length)
@@ -36,13 +44,26 @@ function writeValue(data){
   var pm10_o = document.getElementById("pm10_outside");
   var pm10_pb = document.getElementById("pm10_outside_progressbar");
 
-  o3_o.innerHTML = "PM10 Outside (ppm): " +  Math.round(o3);
-  o3_pb.setAttribute("style", `width: ${Math.round(o3 / 2)}%`)
-  pm10_o.innerHTML = "PM10 Outside (ppm): " +  Math.round(pm10 * 10) / 10;
-  pm10_pb.setAttribute("style", `width: ${Math.round(pm10 * 10) / 10}%`)
-weather_icon = "https://" + weather_icon
-document.getElementById('weather').src=weather_icon
+  setProgressBarValue(o3_o, o3_pb, "O3 (ppm): " +  o3, Math.round(o3 / 2), "o3")
+  setProgressBarValue(pm10_o, pm10_pb, "PM10 (ppm): " +  pm10, pm10, "pm10")
+
+  var rulename = "pm10_animation"
+  //pm10_pb.style.animation-name = `${rulename}`;
+  //pm10_pb.parentNode.replaceChild(pm10_pb.cloneNode(true), pm10_pb);
+
+  //o3_o.innerHTML = "PM10 Outside (ppm): " +  o3;
+  //o3_pb.setAttribute("style", `width: ${Math.round(o3 / 2)}%; animation-name: pm10_animation`)
+
+  //pm10_o.innerHTML = "PM10 Outside (ppm): " +  Math.round(pm10 * 10) / 10;
+  //pm10_pb.setAttribute("style", `width: ${Math.round(pm10 * 10) / 10}%;
+  //animation-name: pm10_animation`)
+  weather_icon = "https://" + weather_icon
+  document.getElementById('weather').src=weather_icon
   console.log(data)
+
+
+
+
 }
 
 //Get the latitude and the longitude;
