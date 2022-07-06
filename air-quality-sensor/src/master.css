@@ -45,7 +45,7 @@ body {
 
 .flex-child:first-child {
   margin-left: auto;
-  margin-right: -10px;
+  margin-right: 0px;
 }
 
 .weather div {
