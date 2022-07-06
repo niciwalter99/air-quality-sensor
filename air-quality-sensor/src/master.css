@@ -10,6 +10,9 @@ body {
 
 }
 
+#body {
+  background-color: "#355778";
+}
 @keyframes example {
   from {width: 0%;}
   to {width: var(--w);}

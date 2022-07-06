@@ -4,6 +4,9 @@ var o3
 var temp_outside
 var weather_icon
 
+// #5DBFB3
+
+
   if (navigator.geolocation) {
     console.log("get location");
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
